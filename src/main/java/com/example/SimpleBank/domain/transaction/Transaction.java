@@ -1,8 +1,7 @@
-package domain.transaction;
+package com.example.SimpleBank.domain.transaction;
 
 
-import domain.client.Client;
-import domain.client.ClientType;
+import com.example.SimpleBank.domain.client.Client;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

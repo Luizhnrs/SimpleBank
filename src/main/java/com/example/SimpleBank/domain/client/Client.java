@@ -1,11 +1,10 @@
-package domain.client;
+package com.example.SimpleBank.domain.client;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 
 import java.math.BigDecimal;
 
