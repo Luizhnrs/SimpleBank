@@ -21,4 +21,7 @@ public class ClientService {
             throw new Exception("This client does not have enough balance to complete the transaction");
         }
     }
+    public Client findClientById(Long id) throws Exception {
+       return this.repository.findClientById(id).orElseThrow(() -> new Exception("Client Not Found"));
+    }
 }
