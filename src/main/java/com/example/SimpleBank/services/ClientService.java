@@ -17,5 +17,8 @@ public class ClientService {
         if(sender.getClientType() == ClientType.ETREPREUNEUR){
             throw new Exception("This entrepreneur tier user is not able to make this transaction");
         }
+        if(sender.getBalance().compareTo(value) < 0){
+            throw new Exception("This client does not have enough balance to complete the transaction");
+        }
     }
 }
