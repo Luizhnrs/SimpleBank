@@ -25,12 +25,16 @@ public class Client {
     @Column(unique = true)
     private String email;
     private String password;
-    private BigDecimal value;
+    private BigDecimal balance;
 
     private ClientType clientType;
 
     public ClientType getClientType() {
         return this.clientType;
+    }
+
+    public Comparable<BigDecimal> getBalance() {
+        return balance;
     }
 
 }
