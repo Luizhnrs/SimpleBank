@@ -24,5 +24,8 @@ public class Transaction {
     private BigDecimal value;
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private Client client;
+    private Client sender;
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private Client receiver;
 }
