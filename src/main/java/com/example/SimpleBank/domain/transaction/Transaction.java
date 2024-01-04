@@ -30,4 +30,24 @@ public class Transaction {
     private Client receiver;
 
     private LocalDateTime timeStamp;
+
+    public Object value() {
+        return null;
+    }
+
+    public void setValue(Object value) {
+        return;
+    }
+
+    public void setSender(Client sender) {
+        return;
+    }
+
+    public void setReceiver(Client receiver) {
+        return;
+    }
+
+    public void setTimestamp(LocalDateTime now) {
+        return;
+    }
 }
