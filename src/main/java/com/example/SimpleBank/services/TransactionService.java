@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Service
@@ -34,6 +35,15 @@ public class TransactionService {
         if(!isAuthorized){
             throw new Exception("Transaction not authorized");
         }
+        Transaction newTransaction = new Transaction();
+        newTransaction.setValue(newTransaction.value());
+        newTransaction.setSender(sender);
+        newTransaction.setReceiver(receiver);
+        newTransaction.setTimestamp(LocalDateTime.now());
+
+        sender.setBalance(sender.getBalance().subtract(transaction.value()));
+        receiver.setBalance(receiver.getBalance().add(transaction.value()));
+
     }
 
     public boolean authorizeTransaction(Client sender, BigDecimal value){
