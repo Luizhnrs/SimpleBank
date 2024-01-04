@@ -1,4 +1,4 @@
-package domain;
+package domain.client;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
