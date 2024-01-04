@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity(name = "transaction")
 @Table(name = "transaction")
@@ -28,4 +29,6 @@ public class Transaction {
     @ManyToOne
     @JoinColumn(name = "receiver_id")
     private Client receiver;
+
+    private LocalDateTime timeStamp;
 }
