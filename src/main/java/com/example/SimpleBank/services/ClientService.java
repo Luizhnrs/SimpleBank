@@ -24,4 +24,8 @@ public class ClientService {
     public Client findClientById(Long id) throws Exception {
        return this.repository.findClientById(id).orElseThrow(() -> new Exception("Client Not Found"));
     }
+
+    public void saveClient(Client client ){
+        this.repository.save(client);
+    }
 }
