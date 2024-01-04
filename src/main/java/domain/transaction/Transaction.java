@@ -1,6 +1,8 @@
 package domain.transaction;
 
 
+import domain.client.Client;
+import domain.client.ClientType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +24,5 @@ public class Transaction {
     private BigDecimal value;
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private C
+    private Client client;
 }
