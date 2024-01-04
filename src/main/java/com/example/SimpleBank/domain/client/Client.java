@@ -26,7 +26,7 @@ public class Client {
     private String email;
     private String password;
     private BigDecimal balance;
-
+    @Enumerated(EnumType.STRING)
     private ClientType clientType;
 
     public ClientType getClientType() {
