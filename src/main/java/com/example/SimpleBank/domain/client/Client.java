@@ -28,4 +28,9 @@ public class Client {
     private BigDecimal value;
 
     private ClientType clientType;
+
+    public ClientType getClientType() {
+        return this.clientType;
+    }
+
 }
