@@ -58,7 +58,7 @@ public class TransactionService {
 
     }
 
-    public boolean authorizeTransaction(Client sender, BigDecimal value){
+    public boolean authorizeTransaction(Client sender, BigDecimal quantity){
         ResponseEntity <Map> authorizationResponse = restTemplate.getForEntity("https://run.mocky.io/v3/1d692d62-633e-46cf-a27b-ae448a4671f7", Map.class);
 
         if(authorizationResponse.getStatusCode() == HttpStatus.OK){
