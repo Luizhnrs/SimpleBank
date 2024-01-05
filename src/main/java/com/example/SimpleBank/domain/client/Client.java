@@ -1,5 +1,6 @@
 package com.example.SimpleBank.domain.client;
 
+import com.example.SimpleBank.dtos.ClientDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,5 +44,14 @@ public class Client {
 
     public String getEmail() {
         return email;
+    }
+
+    public Client(ClientDTO data){
+        this.name = data.name();
+        this.surname = data.surname();
+        this.balance = data.balance();
+        this.clientType = data.clientType();
+        this.password = data.password();
+        this.email = data.email();
     }
 }
