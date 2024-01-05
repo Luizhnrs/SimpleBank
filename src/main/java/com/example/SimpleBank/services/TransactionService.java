@@ -37,18 +37,17 @@ public class TransactionService {
             throw new Exception("Transaction not authorized");
         }
 
-        BigDecimal valueToSubtract = new BigDecimal("");
-
         Transaction newTransaction = new Transaction();
         newTransaction.setValue(newTransaction.amount());
         newTransaction.setSender(sender);
         newTransaction.setReceiver(receiver);
         newTransaction.setTimestamp(LocalDateTime.now());
-        transaction.subtractValue(valueToSubtract);
 
-        sender.setBalance(sender.getBalance().valueToSubtract(transaction.amount()));
+        BigDecimal senderBalance = new BigDecimal(sender.getBalance().toString());
+        BigDecimal receiverBalance = new BigDecimal(receiver.getBalance().toString());
 
-
+        sender.setBalance(sender.getBalance(BigDecimal.valueOf(transaction.amount(senderBalance)).subtract(senderBalance));
+        receiver.setBalance(receiver.getBalance().add(transaction.amount()));
     }
 
     public boolean authorizeTransaction(Client sender, BigDecimal value){
