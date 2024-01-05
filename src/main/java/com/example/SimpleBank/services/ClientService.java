@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class ClientService {
@@ -31,6 +32,10 @@ public class ClientService {
         Client newClient = new Client(data);
         this.saveClient(newClient);
         return newClient;
+    }
+
+    public List<Client> getAllClients(){
+        return this.repository.findAll();
     }
 
     public void saveClient(Client client ){
