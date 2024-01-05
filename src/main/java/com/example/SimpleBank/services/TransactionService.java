@@ -3,6 +3,7 @@ package com.example.SimpleBank.services;
 import com.example.SimpleBank.domain.client.Client;
 import com.example.SimpleBank.domain.transaction.Transaction;
 import com.example.SimpleBank.dtos.TransactionDTO;
+import com.example.SimpleBank.domain.transaction.Transaction;
 import com.example.SimpleBank.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,20 +30,24 @@ public class TransactionService {
         Client sender = this.clientService.findClientById(transaction.senderId());
         Client receiver = this.clientService.findClientById(transaction.receiverId());
 
-        clientService.validateTransaction(sender, transaction.value());
+        clientService.validateTransaction(sender, transaction.amount());
 
-        boolean isAuthorized = this.authorizeTransaction(sender,transaction.value());
+        boolean isAuthorized = this.authorizeTransaction(sender,transaction.amount());
         if(!isAuthorized){
             throw new Exception("Transaction not authorized");
         }
+
+        BigDecimal valueToSubtract = new BigDecimal("");
+
         Transaction newTransaction = new Transaction();
-        newTransaction.setValue(newTransaction.value());
+        newTransaction.setValue(newTransaction.amount());
         newTransaction.setSender(sender);
         newTransaction.setReceiver(receiver);
         newTransaction.setTimestamp(LocalDateTime.now());
+        transaction.subtractValue(valueToSubtract);
 
-        sender.setBalance(sender.getBalance().subtract(transaction.value()));
-        receiver.setBalance(receiver.getBalance().add(transaction.value()));
+        sender.setBalance(sender.getBalance().valueToSubtract(transaction.amount()));
+
 
     }
 
@@ -54,6 +59,4 @@ public class TransactionService {
             return "Authorized".equalsIgnoreCase(message);
         }else return false;
     }
-
-
 }
