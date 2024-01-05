@@ -55,9 +55,4 @@ public class Transaction {
         return null;
     }
 
-    public void subtractValue (BigDecimal valueToSubtract){
-        if(valueToSubtract != null) {
-            this.value = this.value.subtract(valueToSubtract);
-        }
-    }
 }
