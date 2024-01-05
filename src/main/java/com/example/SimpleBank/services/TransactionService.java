@@ -46,8 +46,16 @@ public class TransactionService {
         BigDecimal senderBalance = new BigDecimal(sender.getBalance().toString());
         BigDecimal receiverBalance = new BigDecimal(receiver.getBalance().toString());
 
-        sender.setBalance(sender.getBalance(BigDecimal.valueOf(transaction.amount(senderBalance)).subtract(senderBalance));
-        receiver.setBalance(receiver.getBalance().add(transaction.amount()));
+        senderBalance = senderBalance.subtract(transaction.amount());
+        receiverBalance = receiverBalance.add(transaction.amount());
+
+        sender.setBalance(senderBalance.subtract(transaction.amount()));
+        receiver.setBalance(receiverBalance.add(transaction.amount()));
+
+        this.repository.save(newTransaction);
+        this.clientService.saveClient(sender);
+        this.clientService.saveClient(receiver);
+
     }
 
     public boolean authorizeTransaction(Client sender, BigDecimal value){
