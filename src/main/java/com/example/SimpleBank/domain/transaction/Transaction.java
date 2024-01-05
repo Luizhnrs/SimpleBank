@@ -31,11 +31,11 @@ public class Transaction {
 
     private LocalDateTime timeStamp;
 
-    public Object value() {
+    public Object setValue(Transaction value) {
         return null;
     }
 
-    public void setValue(Object value) {
+    public void setAmount(Transaction value) {
         return;
     }
 
@@ -49,5 +49,15 @@ public class Transaction {
 
     public void setTimestamp(LocalDateTime now) {
         return;
+    }
+
+    public Transaction amount() {
+        return null;
+    }
+
+    public void subtractValue (BigDecimal valueToSubtract){
+        if(valueToSubtract != null) {
+            this.value = this.value.subtract(valueToSubtract);
+        }
     }
 }
