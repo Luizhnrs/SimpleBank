@@ -37,4 +37,8 @@ public class Client {
         return balance;
     }
 
+    public void setBalance(BigDecimal newBalance){
+        this.balance = newBalance;
+    }
+
 }
