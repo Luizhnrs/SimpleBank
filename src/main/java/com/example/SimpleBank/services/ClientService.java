@@ -30,6 +30,7 @@ public class ClientService {
     public Client createClient(ClientDTO data){
         Client newClient = new Client(data);
         this.saveClient(newClient);
+        return newClient;
     }
 
     public void saveClient(Client client ){
