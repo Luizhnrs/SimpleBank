@@ -41,4 +41,7 @@ public class Client {
         this.balance = newBalance;
     }
 
+    public String getEmail() {
+        return email;
+    }
 }
