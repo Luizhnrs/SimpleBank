@@ -7,7 +7,6 @@ import com.example.SimpleBank.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.Cipher;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,11 +15,11 @@ public class ClientService {
     @Autowired
     private ClientRepository repository;
 
-    public void validateTransaction(Client sender, BigDecimal value) throws Exception {
+    public void validateTransaction(Client sender, BigDecimal quantity) throws Exception {
         if(sender.getClientType() == ClientType.ETREPREUNEUR){
             throw new Exception("This entrepreneur tier user is not able to make this transaction");
         }
-        if(sender.getBalance().compareTo(value) < 0){
+        if(sender.getBalance().compareTo(quantity) < 0){
             throw new Exception("This client does not have enough balance to complete the transaction");
         }
     }
